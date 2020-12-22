@@ -11,10 +11,6 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./src</directory>
-            <exclude>
-                <file>./src/.meta.php</file>
-                <directory>./src/Commands</directory>
-            </exclude>
         </whitelist>
     </filter>
     <testsuites>
