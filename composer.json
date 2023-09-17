@@ -28,7 +28,7 @@
   },
   "require-dev": {
     "umbrellio/code-style-php": "^1.0",
-    "orchestra/testbench": "^3.5|^4.0|^5.0|^6.0",
+    "orchestra/testbench": "^3.5|^4.0|^5.0|^6.0|^7.0|^8.0",
     "symplify/easy-coding-standard":  "^9.3.15",
     "php-coveralls/php-coveralls": "^2.1"
   },
