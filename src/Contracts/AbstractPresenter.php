@@ -8,6 +8,9 @@ use Hemp\Presenter\Presenter;
 use Illuminate\Contracts\Queue\QueueableEntity;
 use JsonSerializable;
 
+/**
+ * @codeCoverageIgnore
+ */
 class AbstractPresenter extends Presenter implements JsonSerializable, QueueableEntity
 {
     private $relationMapping = [];
