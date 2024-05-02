@@ -24,7 +24,7 @@ jobs:
       fail-fast: false
     env:
       PHP_CS_FIXER_FUTURE_MODE: '0'
-    name: 'Linter PHP'
+    name: 'Linter / PHP ${{ matrix.php_versions }}'
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
