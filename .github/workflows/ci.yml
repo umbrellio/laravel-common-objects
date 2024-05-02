@@ -5,7 +5,7 @@ on:
   pull_request:
 
 env:
-  php_extensions: 'dom, iconv, intl, json, mbstring, opcache, pcntl, pcov, session, simplexml, xml, zip'
+  php_extensions: 'dom, iconv, intl, json, mbstring, opcache, pcntl, pcov, session, simplexml, xml, zip, xdebug'
   key: cache-v0.1
 
 jobs:
@@ -14,17 +14,17 @@ jobs:
     timeout-minutes: 20
     strategy:
       matrix:
-        operating_system:
-          - ubuntu-latest
-        php_versions:
-          - '7.4'
-          - '8.0'
-          - '8.1'
-          - '8.2'
+        operating_system: [ubuntu-latest]
+        php_versions: ['8.3']
+        experimental: [false]
+        include:
+          - operating_system: 'ubuntu-latest'
+            php_versions: '8.4'
+            experimental: true
       fail-fast: false
     env:
       PHP_CS_FIXER_FUTURE_MODE: '0'
-    name: 'Lint PHP'
+    name: 'Linter PHP'
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
@@ -54,7 +54,9 @@ jobs:
       - name: 'Setup problem matchers for PHPUnit'
         run: 'echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"'
       - name: 'Install PHP dependencies with Composer'
+        continue-on-error: ${{ matrix.experimental }}
         run: composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader
         working-directory: './'
       - name: 'Linting PHP source files'
+        continue-on-error: ${{ matrix.experimental }}
         run: 'vendor/bin/ecs check --config=ecs.php .'
