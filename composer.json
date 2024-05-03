@@ -27,7 +27,7 @@
     "hemp/presenter": "^3.0"
   },
   "require-dev": {
-    "umbrellio/code-style-php": "^1.0",
+    "umbrellio/code-style-php": "^1.0 || ^2.0",
     "orchestra/testbench": "^9.0",
     "symplify/easy-coding-standard":  "^9.3.15",
     "php-coveralls/php-coveralls": "^2.1"
